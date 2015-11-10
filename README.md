@@ -1,2 +1,2 @@
-# Article_Management_Spring_Web_Services
+# Article Management
 This is Article Management using Spring Framework Web Services.
