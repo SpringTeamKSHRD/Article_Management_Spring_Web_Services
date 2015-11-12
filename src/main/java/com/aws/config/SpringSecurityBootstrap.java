@@ -4,6 +4,6 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
 
 public class SpringSecurityBootstrap extends AbstractSecurityWebApplicationInitializer{
 
-	
+	//DO NOT DELETE THIS CLASS
 
 }

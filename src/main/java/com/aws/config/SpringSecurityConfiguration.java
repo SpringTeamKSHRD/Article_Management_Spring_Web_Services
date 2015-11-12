@@ -17,30 +17,23 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {		
 		auth.jdbcAuthentication()
 			.dataSource(dataSource)
 			.usersByUsernameQuery("SELECT username,password,enable FROM tbuser WHERE username=?")
-			.authoritiesByUsernameQuery("SELECT username,role FROM tbuser WHERE username=? ");
-		
+			.authoritiesByUsernameQuery("SELECT username,role FROM tbuser WHERE username=? ");		
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
-		//http.authorizeRequests().antMatchers("/","/home").permitAll();
-		//http.authorizeRequests().antMatchers("/admin/**").access("hasRole('admin')");
-		//http.authorizeRequests().antMatchers("/author/**").access("hasRole('author')");
 		http
 			.formLogin()
 				.and()
 			.authorizeRequests()
-				//.antMatchers("/","/home").permitAll()
-				.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
-				//.antMatchers("/author/**").hasRole("author");
-		
-		//http.exceptionHandling().accessDeniedPage("/accessDenied");
+				.antMatchers("/").permitAll()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/author/**").hasRole("AUTHOR");		
+		http.exceptionHandling().accessDeniedPage("/403");
 	}
 	
 	

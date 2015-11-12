@@ -99,17 +99,17 @@ WITH (OIDS=FALSE)
 -- Records of tbuser
 -- ----------------------------
 BEGIN;
-INSERT INTO "tbuser" VALUES ('1', 'lit', '1234', 'admin', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('2', 'derp', '1234', 'admin', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('3', 'derp1', '1234', 'author', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('4', 'derp2', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('5', 'derp3', '1234', 'author', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('6', 'derp4', '1234', 'admin', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('7', 'derp5', '1234', 'author', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('8', 'derp6', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('9', 'derp7', '1234', 'author', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('10', 'derp8', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('11', 'derp9', '1234', 'author', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('1', 'admin1', '1', 'ROLE_ADMIN', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('2', 'author1', '1', 'ROLE_AUTHOR', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('3', 'derp1', '1234', 'ROLE_AUTHOR', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('4', 'derp2', '1234', 'ROLE_ADMIN', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('5', 'derp3', '1234', 'ROLE_AUTHOR', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('6', 'derp4', '1234', 'ROLE_ADMIN', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('7', 'derp5', '1234', 'ROLE_AUTHOR', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('8', 'derp6', '1234', 'ROLE_ADMIN', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('9', 'derp7', '1234', 'ROLE_AUTHOR', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('10', 'derp8', '1234', 'ROLE_ADMIN', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('11', 'derp9', '1234', 'ROLE_AUTHOR', 't', null, null, null, null, null);
 INSERT INTO "tbuser" VALUES ('12', 'asdf', 'asdf', 'asdf', 't', null, null, null, null, null);
 COMMIT;
 

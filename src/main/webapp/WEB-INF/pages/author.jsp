@@ -9,7 +9,7 @@
 <title>Home</title>
 </head>
 <body>
-<p>home page</p>
+<p>author page</p>
 <p>user ${name}</p>
 <p>role ${role}</p>
 <c:choose>
