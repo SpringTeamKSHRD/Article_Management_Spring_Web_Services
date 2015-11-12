@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90303
 File Encoding         : 65001
 
-Date: 2015-11-12 09:16:18
+Date: 2015-11-12 12:02:12
 */
 
 
@@ -35,9 +35,9 @@ CREATE SEQUENCE "tbuser_id_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 11
+ START 12
  CACHE 1;
-SELECT setval('"public"."tbuser_id_seq"', 11, true);
+SELECT setval('"public"."tbuser_id_seq"', 12, true);
 
 -- ----------------------------
 -- Table structure for tbarticle
@@ -101,15 +101,16 @@ WITH (OIDS=FALSE)
 BEGIN;
 INSERT INTO "tbuser" VALUES ('1', 'lit', '1234', 'admin', 't', null, null, null, null, null);
 INSERT INTO "tbuser" VALUES ('2', 'derp', '1234', 'admin', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('3', 'derp', '1234', 'author', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('4', 'derp', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('5', 'derp', '1234', 'author', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('6', 'derp', '1234', 'admin', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('7', 'derp', '1234', 'author', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('8', 'derp', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('9', 'derp', '1234', 'author', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('10', 'derp', '1234', 'admin', 'f', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('11', 'derp', '1234', 'author', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('3', 'derp1', '1234', 'author', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('4', 'derp2', '1234', 'admin', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('5', 'derp3', '1234', 'author', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('6', 'derp4', '1234', 'admin', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('7', 'derp5', '1234', 'author', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('8', 'derp6', '1234', 'admin', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('9', 'derp7', '1234', 'author', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('10', 'derp8', '1234', 'admin', 'f', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('11', 'derp9', '1234', 'author', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('12', 'asdf', 'asdf', 'asdf', 't', null, null, null, null, null);
 COMMIT;
 
 -- ----------------------------
@@ -122,6 +123,11 @@ ALTER SEQUENCE "tbuser_id_seq" OWNED BY "tbuser"."id";
 -- Primary Key structure for table tbarticle
 -- ----------------------------
 ALTER TABLE "tbarticle" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Uniques structure for table tbuser
+-- ----------------------------
+ALTER TABLE "tbuser" ADD UNIQUE ("username");
 
 -- ----------------------------
 -- Primary Key structure for table tbuser

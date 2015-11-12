@@ -29,12 +29,18 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.authorizeRequests().antMatchers("/","/home").permitAll();
-		http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");	
+		//http.authorizeRequests().antMatchers("/","/home").permitAll();
+		//http.authorizeRequests().antMatchers("/admin/**").access("hasRole('admin')");
+		//http.authorizeRequests().antMatchers("/author/**").access("hasRole('author')");
 		http
-			.formLogin();
+			.formLogin()
+				.and()
+			.authorizeRequests()
+				//.antMatchers("/","/home").permitAll()
+				.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+				//.antMatchers("/author/**").hasRole("author");
 		
-		http.exceptionHandling().accessDeniedPage("/accessDeined");
+		//http.exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 	
 	
