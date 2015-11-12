@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PagesController {
 	@RequestMapping(value = "/" ,  method = RequestMethod.GET)
 	public String homePage(ModelMap model){
-		model.addAttribute("message", "Helsdfsdlo World");
+		model.addAttribute("message", "zzzzzzzzzzzz");
 		System.out.println("homesfdsd page");
 		return "home";
 	}	
