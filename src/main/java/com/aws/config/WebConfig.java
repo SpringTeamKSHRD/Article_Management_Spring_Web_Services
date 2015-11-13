@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -42,6 +43,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return dataSource;
 	}
 	
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+	    return new MyCustomLoginSuccessHandler("/successlogin");
+	}
+
+	/*
+	 * @Bean public ApplicationListener<AuthenticationSuccessEvent>
+	 * getSpringListener() { return new AuthenticationListener(); }
+	 */
+
 	/*
 	 * @Bean public UserServiceImpl studentServiceImpl(){ return new
 	 * UserServiceImpl(getDataSource()); }
