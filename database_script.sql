@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90303
 File Encoding         : 65001
 
-Date: 2015-11-12 12:02:12
+Date: 2015-11-13 08:29:52
 */
 
 
@@ -47,7 +47,7 @@ CREATE TABLE "tbarticle" (
 "id" int8 DEFAULT nextval('tbarticle_id_seq'::regclass) NOT NULL,
 "title" varchar COLLATE "default" NOT NULL,
 "userid" int4 NOT NULL,
-"content" varchar COLLATE "default",
+"content" text COLLATE "default",
 "publish_date" date,
 "enable" bool NOT NULL
 )
@@ -110,7 +110,7 @@ INSERT INTO "tbuser" VALUES ('8', 'derp6', '1234', 'ROLE_ADMIN', 'f', null, null
 INSERT INTO "tbuser" VALUES ('9', 'derp7', '1234', 'ROLE_AUTHOR', 'f', null, null, null, null, null);
 INSERT INTO "tbuser" VALUES ('10', 'derp8', '1234', 'ROLE_ADMIN', 'f', null, null, null, null, null);
 INSERT INTO "tbuser" VALUES ('11', 'derp9', '1234', 'ROLE_AUTHOR', 't', null, null, null, null, null);
-INSERT INTO "tbuser" VALUES ('12', 'asdf', 'asdf', 'asdf', 't', null, null, null, null, null);
+INSERT INTO "tbuser" VALUES ('12', 'asdf', 'asdf', 'ROLE_ADMIN', 't', null, null, null, null, null);
 COMMIT;
 
 -- ----------------------------

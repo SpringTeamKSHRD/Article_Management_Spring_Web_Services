@@ -1,0 +1,2 @@
+INSERT INTO "tbuser"(username,password,enable,role) VALUES ('derp','asd',true,'asf');
+insert into tbarticle(title,userid,content,publish_date,enable)  values('sdf','2','sdf','2010-2-1',true);
