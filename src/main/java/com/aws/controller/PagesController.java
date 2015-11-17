@@ -17,12 +17,13 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.aws.entities.User;
 
 @Controller
 public class PagesController {
@@ -66,10 +67,11 @@ public class PagesController {
 	public String loginPage(HttpServletRequest request, Model model) {
 		String referrer = request.getHeader("Referer");
 		request.getSession().setAttribute("url_prior_login", referrer);
-		//System.out.println(referrer);
-		//System.out.println(isLogin());
-/*		if(isLogin())	return "redirect:/";
-		else			return "login";*/
+		// System.out.println(referrer);
+		// System.out.println(isLogin());
+		/*
+		 * if(isLogin()) return "redirect:/"; else return "login";
+		 */
 		return "login";
 	}
 
@@ -81,30 +83,13 @@ public class PagesController {
 		return "redirect:/";
 	}
 
-/*	@RequestMapping(value = "/clogin", method = RequestMethod.POST)
-	@ResponseBody public String logout1Page(			
-			@RequestParam("username") String username,
-			@RequestParam("password") String password,
-			HttpServletRequest request, HttpServletResponse response) {
-		try {
-			request.login("username","password");
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/";
-	}*/
-	
-/*	@RequestMapping(value = "/clogin", method = RequestMethod.POST)
-	@ResponseBody public ResponseEntity<Map<String, Object>> asdf(			
-			@RequestParam("username") String username,
-			@RequestParam("password") String password,
-			HttpServletRequest request,
+	@RequestMapping(value = "/clogin", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<Map<String, Object>> login(@RequestBody User usr, HttpServletRequest request,
 			HttpServletResponse response) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		HttpStatus status = null;
 		try {
-			request.login(username,password);
+			request.login(usr.getUsername(), usr.getPassword());
 			map.put("MESSAGE", "LOG IN SUCCESS");
 			status = HttpStatus.OK;
 		} catch (ServletException e) {
@@ -113,11 +98,43 @@ public class PagesController {
 			status = HttpStatus.NOT_FOUND;
 			e.printStackTrace();
 		}
-		return new ResponseEntity<Map<String, Object>>(map, status);		
-	}*/
-	
-	
-	
+		System.out.println(isLogin());
+		System.out.println(getRole());
+		System.out.println(getUsername());
+		return new ResponseEntity<Map<String, Object>>(map, status);
+	}
+
+	@RequestMapping(value = "/clogout", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<Map<String, Object>> login(HttpServletRequest request,
+			HttpServletResponse response) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		HttpStatus status = null;
+		try {
+			request.logout();
+			map.put("MESSAGE", "LOG OUT SUCCESS");
+			status = HttpStatus.OK;
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			map.put("MESSAGE", "LOG OUT NOT SUCCESS");
+			status = HttpStatus.NOT_FOUND;
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Map<String, Object>>(map, status);
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<Map<String, Object>> login1(HttpServletRequest request,
+			HttpServletResponse response) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		HttpStatus status = null;
+		System.out.println(isLogin());
+		System.out.println(getRole());
+		System.out.println(getUsername());
+		map.put("MESSAGE", "THIS is HOME :V");
+		status = HttpStatus.OK;
+		return new ResponseEntity<Map<String, Object>>(map, status);
+	}
+
 	@RequestMapping(value = "/403")
 	public String accessDenied(ModelMap m) {
 		m.addAttribute("message", "accessDenied , " + getUsername());

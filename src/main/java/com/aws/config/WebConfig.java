@@ -37,7 +37,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/articledb");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/articledb1");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("1234");
 		return dataSource;

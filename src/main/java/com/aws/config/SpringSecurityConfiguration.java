@@ -42,8 +42,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/resources/**").permitAll() 
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/author/**").hasRole("AUTHOR")
-				.antMatchers("/login").hasRole("ANONYMOUS");
-			//.and().csrf().disable();						
+				.antMatchers("/login").hasRole("ANONYMOUS")
+			.and().csrf().disable();						
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
 	
